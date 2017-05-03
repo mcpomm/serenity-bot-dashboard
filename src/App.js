@@ -6,10 +6,11 @@ import './App.css';
 
 class App extends Component {
   render() {
+    console.log('geht was 2?');
     return (
       <div className="App">
         <h1>serenity bots</h1>
-        <BotList color="danger">Danger!</BotList>
+        <BotList color="danger">Danger</BotList>
       </div>
     );
   }
