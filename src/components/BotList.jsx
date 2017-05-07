@@ -7,16 +7,30 @@ export default class Example extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: 'initial'
+      value: 'initial',
+      bots: []
     };
     // Creating the socket-client instance will automatically connect to the server.
     this.socket = SocketIOClient('http://localhost:3000');
-    this.socket.on('broad', this.onReceivedMessage.bind(this));
+    this.socket.emit('getBotList',{});
+    this.socket.on('broad', this.onBroad.bind(this));
+    this.socket.on('botList', this.onBotList.bind(this));
   }
 
-  onReceivedMessage(messages) {
+  onBroad(messages) {
     this.setState({
-      value: messages
+      value: messages,
+    });
+  }
+
+  onBotList(bots) {
+    bots = JSON.parse(bots);
+    let renderBots = [];
+    bots.map(function(bot) {
+      renderBots.push({id:bot._id, title:bot.title, ip:bot.ip, status:bot.status})
+    })
+    this.setState({
+      bots: renderBots
     });
   }
 
@@ -24,11 +38,11 @@ export default class Example extends React.Component {
     console.log('geht was?');
     return (
       <ListGroup>
-        <ListGroupItem>{this.state.value}</ListGroupItem>
-        <ListGroupItem>Dapibus ac facilisis in</ListGroupItem>
-        <ListGroupItem>Morbi leo risus</ListGroupItem>
-        <ListGroupItem>Porta ac consectetur ac</ListGroupItem>
-        <ListGroupItem>Vestibulum at eros</ListGroupItem>
+        {
+          this.state.bots.map(function(bot) {
+            return <ListGroupItem key={bot._id}>{bot.title} | {bot.ip} | {bot.status}</ListGroupItem>
+          })
+        }
       </ListGroup>
     );
   }
