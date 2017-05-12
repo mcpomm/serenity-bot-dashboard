@@ -11,7 +11,7 @@ export default class Example extends React.Component {
       bots: []
     };
     // Creating the socket-client instance will automatically connect to the server.
-    this.socket = SocketIOClient('http://localhost:3000');
+    this.socket = SocketIOClient('http://localhost:3001');
     this.socket.emit('getBotList',{});
     this.socket.on('broad', this.onBroad.bind(this));
     this.socket.on('botList', this.onBotList.bind(this));
@@ -40,7 +40,7 @@ export default class Example extends React.Component {
       <ListGroup>
         {
           this.state.bots.map(function(bot) {
-            return <ListGroupItem key={bot._id}>{bot.title} | {bot.ip} | {bot.status}</ListGroupItem>
+            return <ListGroupItem key={bot._id}>{typeof bots}| {bot.title} | {bot.ip} | {bot.status}</ListGroupItem>
           })
         }
       </ListGroup>
