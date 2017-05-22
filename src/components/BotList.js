@@ -40,7 +40,7 @@ export default class Example extends React.Component {
       <ListGroup>
         {
           this.state.bots.map(function(bot) {
-            return <ListGroupItem key={bot._id}>{bot.title} | {bot.ip} | {bot.status}</ListGroupItem>
+            return <ListGroupItem tag="a" href="#" key={bot._id}>{bot.title} | {bot.ip} | {bot.status}</ListGroupItem>
           })
         }
       </ListGroup>

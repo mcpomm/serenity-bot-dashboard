@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import {Router, Route} from 'react-router';
 import BotList from './components/BotList';
 //import logo from './logo.svg';
+import BotRouter from './BotRouter';
 import './App.css';
 
 class App extends Component {
@@ -9,7 +9,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1>serenity bots</h1>
-        <BotList>Danger</BotList>
+        <BotRouter />
       </div>
     );
   }
