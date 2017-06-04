@@ -1,23 +1,17 @@
 import React from 'react';
-import { Card, CardImg, CardText, CardBlock, CardLink,
-  CardTitle, CardSubtitle } from 'reactstrap';
+import { Grid, Row, Col, Image } from 'react-bootstrap';
 
 const Example = (props) => {
   return (
-    <div>
-      <Card>
-        <CardBlock>
-          <CardTitle>Card title</CardTitle>
-          <CardSubtitle>Card subtitle</CardSubtitle>
-        </CardBlock>
-        <img width="100%" src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180" alt="Card image cap" />
-        <CardBlock>
-          <CardText>Some quick example text to build on the card title and make up the bulk of the cards content.</CardText>
-          <CardLink href="#">Card Link</CardLink>
-          <CardLink href="#">Another Link</CardLink>
-        </CardBlock>
-      </Card>
-    </div>
+    <Grid>
+      <Row className="show-grid">
+        <Col xs={12} md={8}><h1>Ragnar</h1></Col>
+      </Row>
+      <Row className="show-grid">
+        <Col xs={12} md={8}>text</Col>
+        <Col xs={6} md={4}><Image src="https://robohash.org/ragnar.png?bgset=bg2" circle /></Col>
+      </Row>
+    </Grid>
   );
 };
 

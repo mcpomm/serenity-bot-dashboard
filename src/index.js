@@ -1,12 +1,13 @@
+
 import React from 'react';
-import ReactDOM from 'react-dom';
-import 'bootstrap/dist/css/bootstrap.css';
-import App from './App';
-import './index.css';
+import { render } from 'react-dom';
+import { createStore } from 'redux';
+import BotApp from './reducers';
+import Root from './components/Root';
 
-//import BotList from './components/BotList';
+let store = createStore(BotApp);
 
-ReactDOM.render(
-  <App />,
+render(
+  <Root store={store} />,
   document.getElementById('root')
 );

@@ -1,49 +1,32 @@
-import React from 'react';
-import SocketIOClient from 'socket.io-client';
-import { ListGroup, ListGroupItem } from 'reactstrap';
+import React from 'react'
+import PropTypes from 'prop-types'
+import { Grid, Row, Col, Thumbnail, Button } from 'react-bootstrap';
 
-export default class Example extends React.Component {
+const BotList = ({ botlist}) => (
+  <Grid>
+    <Row>
+      {botlist.map(bot =>
+        <Col sm={6} md={3}>
+          <Thumbnail src={"https://robohash.org/" + bot.title} alt="242x200">
+            <h3>{bot.title}</h3>
+            <p>{"ip: " + bot.ip}</p>
+            <p>{"status: " + bot.status}</p>
+            <p>
+              <Button href={"/bots/" + bot._id} bsStyle="primary">remote control</Button>
+            </p>
+          </Thumbnail>
+        </Col>
+      )}
+    </Row>
+  </Grid>
+);
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      value: 'initial',
-      bots: []
-    };
-    // Creating the socket-client instance will automatically connect to the server.
-    this.socket = SocketIOClient('http://localhost:3001');
-    this.socket.emit('getBotList',{});
-    this.socket.on('broad', this.onBroad.bind(this));
-    this.socket.on('botList', this.onBotList.bind(this));
-  }
-
-  onBroad(messages) {
-    this.setState({
-      value: messages,
-    });
-  }
-
-  onBotList(bots) {
-    bots = JSON.parse(bots);
-    let renderBots = [];
-    bots.map(function(bot) {
-      renderBots.push({id:bot._id, title:bot.title, ip:bot.ip, status:bot.status})
-    })
-    this.setState({
-      bots: renderBots
-    });
-  }
-
-  render() {
-    console.log('geht was?');
-    return (
-      <ListGroup>
-        {
-          this.state.bots.map(function(bot) {
-            return <ListGroupItem tag="a" href="#" key={bot._id}>{bot.title} | {bot.ip} | {bot.status}</ListGroupItem>
-          })
-        }
-      </ListGroup>
-    );
-  }
+BotList.propTypes = {
+  botlist: PropTypes.arrayOf(PropTypes.shape({
+    _id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    ip: PropTypes.string.isRequired,
+    status: PropTypes.string.isRequired,
+  }).isRequired).isRequired
 }
+export default BotList
