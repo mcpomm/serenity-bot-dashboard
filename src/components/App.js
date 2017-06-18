@@ -1,10 +1,10 @@
 import React from 'react'
-import BotList from '../containers/BotList'
-import ReceiveBotList from '../containers/ReceiveBotList'
+import Bots from '../containers/container_bots'
+import BotList from '../containers/container_botlist'
 
 const App = () => (
   <div>
-    <ReceiveBotList />
+    <Bots />
     <BotList />
   </div>
 )

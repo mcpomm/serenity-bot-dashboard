@@ -1,10 +1,8 @@
 import { combineReducers } from 'redux'
-import bots from './bots'
-import visibilityFilter from './visibilityFilter'
+import BotsReducer from './reducer_bots'
 
-const botApp = combineReducers({
-  bots,
-  visibilityFilter
+const rootReducer = combineReducers({
+  bots: BotsReducer
 })
 
-export default botApp
+export default rootReducer

@@ -1,5 +1,5 @@
 
-export const addBotList = (botlist) => ({
-  type: 'ADD_BOTLIST',
-  list:botlist,
+export const showBots = (botlist) => ({
+  type: 'SHOW_BOTS',
+  payload: botlist
 })

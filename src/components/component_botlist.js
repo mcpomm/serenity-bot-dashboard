@@ -6,7 +6,7 @@ const BotList = ({ botlist}) => (
   <Grid>
     <Row>
       {botlist.map(bot =>
-        <Col sm={6} md={3}>
+        <Col key={bot._id} sm={6} md={3}>
           <Thumbnail src={"https://robohash.org/" + bot.title} alt="242x200">
             <h3>{bot.title}</h3>
             <p>{"ip: " + bot.ip}</p>
