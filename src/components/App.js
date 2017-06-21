@@ -1,11 +1,13 @@
 import React from 'react'
-import Bots from '../containers/container_bots'
-import BotList from '../containers/container_botlist'
+import BotSocket from '../containers/BotSocket'
+import Bots from '../containers/Bots'
+import SelectedBot from '../containers/Bot'
 
 const App = () => (
   <div>
+    <BotSocket />
     <Bots />
-    <BotList />
+    <SelectedBot />
   </div>
 )
 

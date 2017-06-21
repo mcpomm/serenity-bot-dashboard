@@ -1,6 +1,7 @@
 import { connect } from 'react-redux'
-import { showBots } from '../actions'
+import { showBots, addBot } from '../actions'
 import SocketIOClient from 'socket.io-client'
+
 const socket = SocketIOClient('http://localhost:3001');
 
 const Bots = ({ dispatch }) => {
@@ -8,7 +9,9 @@ const Bots = ({ dispatch }) => {
   socket.on('botList', (data) => {
     dispatch(showBots(JSON.parse(data)))
   });
-
+  socket.on('bot', (data) => {
+    dispatch(addBot(JSON.parse(data)))
+  });
   return(null);
 
 }
