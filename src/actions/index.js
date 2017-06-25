@@ -9,6 +9,11 @@ export const addBot = (bot) => ({
   payload: bot
 })
 
+export const updateBot = (bot) => ({
+  type: 'UPDATE_BOT',
+  payload: bot
+})
+
 export const selectBot = (bot) => ({
   type: 'BOT_SELECTED',
   payload: bot
