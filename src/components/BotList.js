@@ -9,17 +9,22 @@ const BotList = ({ botlist, selectBot, selectedBot}) => {
   return (
     <Grid>
       <Row>
-        {botlist.map(bot =>
-          <Col key={bot._id} sm={6} md={3}>
-            <Thumbnail src={"https://robohash.org/" + bot.title} alt="242x200">
-              <h3>{bot.title}</h3>
-              <p>{"ip: " + bot.ip}</p>
-              <p>{"status: " + bot.status}</p>
-              <p>
-                <Button onClick={() => selectBot(bot)} bsStyle="primary">remote control</Button>
-              </p>
-            </Thumbnail>
-          </Col>
+        {
+          botlist.map(bot => {
+            let imageUrl = `https://robohash.org/${bot.title}`
+            return (
+              <Col key={bot._id} sm={6} md={3}>
+                <Thumbnail src={imageUrl} alt="242x200">
+                  <h3>{bot.title}</h3>
+                  <p>{"ip: " + bot.ip}</p>
+                  <p>{"status: " + bot.status}</p>
+                  <p>
+                    <Button onClick={() => selectBot(bot)} bsStyle="primary">remote control</Button>
+                  </p>
+                </Thumbnail>
+              </Col>
+            )
+          }
         )}
       </Row>
     </Grid>
