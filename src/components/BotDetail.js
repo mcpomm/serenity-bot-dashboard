@@ -14,7 +14,7 @@ const BotDetail = ({bot}) => {
       </Row>
       <Row className="show-grid">
         <Col xs={12} md={8}>text</Col>
-        <Col xs={6} md={4}><Image src="https://robohash.org/ragnar.png?bgset=bg2" circle /></Col>
+        <Col xs={6} md={4}><Image src={bot.detailImage} circle /></Col>
       </Row>
     </Grid>
   );

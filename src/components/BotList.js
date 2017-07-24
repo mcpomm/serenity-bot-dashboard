@@ -11,7 +11,7 @@ const BotList = ({ botlist, selectBot, selectedBot}) => {
       <Row>
         {
           botlist.map(bot => {
-            let imageUrl = `https://robohash.org/${bot.title}`
+            let imageUrl = bot.listImage
             return (
               <Col key={bot._id} sm={6} md={3}>
                 <Thumbnail src={imageUrl} alt="242x200">
